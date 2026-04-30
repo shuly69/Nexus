@@ -145,7 +145,6 @@ export function ProductsTabSection( ) {
                               <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Color</th>
                               <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Storage</th>
                               <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Quantity</th>
-                              <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">SKU</th>
                               <th className="px-4 py-2 text-right text-sm font-medium text-gray-500">Actions</th>
                             </tr>
                           </thead>
@@ -175,7 +174,6 @@ export function ProductsTabSection( ) {
                                     min="0"
                                   />
                                 </td>
-                                <td className="px-4 py-3 text-sm text-gray-500 font-mono">{variant.sku ?? ''}</td>
                                 <td className="px-4 py-3 text-right">
                                   <button
                                     onClick={() => {

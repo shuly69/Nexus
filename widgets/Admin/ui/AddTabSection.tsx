@@ -1,5 +1,6 @@
 "use client";
 
+import { OurFileRouter } from "@/app/api/uploadthing/core";
 import { createPhone } from "@/entities/Phone/lib/createPhone";
 import { brands } from "@/entities/Phone/lib/getStats";
 import { updateColorField,  updateVariantField } from "@/entities/Phone/lib/updateColor";
@@ -8,10 +9,13 @@ import { useAdminStore } from "@/features/admin/model/adminStore";
 import { usePhoneForm } from "@/features/admin/model/usePhoneForm";
 import { storages } from "@/shared/config/capacity";
 import { colors } from "@/shared/config/colors";
+import UploadImage from "@/shared/ui/UploadButton/ui/UploadButton";
+import { UploadButton } from "@uploadthing/react";
 import { useEffect, useState } from "react";
 import { ZodError } from "zod";
 
 export function AddTabSection() {
+
     const { formData, setFormData, currentVariant, setCurrentVariant, addVariant, removeVariant, reset } = usePhoneForm();
     const {updatePhone, addPhone, setSuccessMessage, phones, editingPhone, setActiveTab, isLoading, setLoading, activeTab} = useAdminStore();
     
@@ -155,22 +159,15 @@ const handleEditPhone = () => {
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Image</label>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) =>
-    setFormData(prev => ({
-      ...prev,
-      imageFile: e.target.files, // FileList
-    }))
-  }
-
-
-                            className={`w-full px-4 py-2 border border-gray-200 rounded-xl cursor-pointer ${formErrors["imageUrl"] ? "border-red-500" : ""}`}
+                        <UploadImage
+                            onUpload={(url) =>
+                                setFormData(prev => ({
+                                    ...prev,
+                                    imageUrl: url,
+                                }))
+                            }
                         />
-                        {formErrors["imageUrl"] && (
-                            <p className="text-red-500 text-sm">{formErrors["imageUrl"]}</p>
-                        )}
+
                     </div>
 
                     <div>

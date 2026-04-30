@@ -41,7 +41,7 @@ export const phoneFormSchema = z.object({
   brand: z.string().min(1, { message: "Brand is required" }),
   model: z.string().min(1, { message: "Model is required" }),
 
-  imageFile: imageFileSchema, 
+  imageFile: z.string().url().optional(), 
 
   price: z.preprocess((v) => Number(v), z.number().positive({
     message: "Price must be greater than zero",

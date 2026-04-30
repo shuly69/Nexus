@@ -8,7 +8,6 @@ import { useAdminStore } from "@/features/admin/model/adminStore";
 
 export async function createPhone(form: Partial<CardPhone>): Promise<CardPhone> {
 const parsed = phoneFormSchema.parse(form);
-  const imageUrl = await uploadImage(parsed.imageFile);
   
 
 const phones = useAdminStore.getState().phones;
@@ -21,7 +20,6 @@ const phones = useAdminStore.getState().phones;
     id: lastId + 1,
     slug: `${parsed.brand}-${parsed.model}`.toLowerCase().replace(/\s+/g, "-"),
     status: "new_arrival",
-    imageUrl,
     createdAt: new Date().toISOString(),
   };
   

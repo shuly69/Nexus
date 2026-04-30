@@ -1,0 +1,20 @@
+export const colors = [
+  { name: "Black", code: "#000000" },
+  { name: "White", code: "#FFFFFF" },
+  { name: "Silver", code: "#C0C0C0" },
+  { name: "Gold", code: "#FFD700" },
+  { name: "Rose Gold", code: "#B76E79" },
+  { name: "Midnight", code: "#1A2A3A" },
+  { name: "Starlight", code: "#F8F9FA" },
+  { name: "Deep Purple", code: "#6B3FA0" },
+  { name: "Pacific Blue", code: "#5F9EA0" },
+  { name: "Graphite", code: "#383838" },
+  { name: "Sierra Blue", code: "#6A8EAF" },
+  { name: "Alpine Green", code: "#3B7A5E" },
+  { name: "Titanium Gray", code: "#8E8E93" },
+  { name: "Desert Titanium", code: "#B87C4E" },
+  { name: "Emerald Forest", code: "#2E7D64" },
+  { name: "Phantom Black", code: "#1F1F1F" },
+  { name: "Phantom Blue", code: "#2B3B4E" },
+  { name: "Porcelain", code: "#F5F0E6" }
+];

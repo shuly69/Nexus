@@ -1,0 +1,1 @@
+export const storages = ["64GB", "128GB", "256GB", "512GB", "1TB"];

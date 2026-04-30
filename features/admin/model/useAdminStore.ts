@@ -2,7 +2,27 @@
 import { CardPhone } from "@/entities/Card/type/model";
 import { create } from "zustand";
 
-export const useAdminStore = create((set, get) => ({
+interface AdminState {
+  expandedPhones: Set<string>;
+  selectedPhone: CardPhone | null;
+  setSelectedPhone: (phone: CardPhone | null) => void;
+  toggleExpand: (id: string) => void;
+}
+
+interface AdminState {
+  phones: CardPhone[];
+  selectedPhone: CardPhone | null;
+  searchTerm: string;
+  filterBrand: string;
+  expandedPhones: Set<string>;
+
+  setPhones: (phones: CardPhone[]) => void;
+  setSelectedPhone: (phone: CardPhone | null) => void;
+  toggleExpand: (id: string) => void;
+}
+
+
+export const useAdminStore = create<AdminState>((set, get) => ({
   phones: [],
   selectedPhone: null,
   searchTerm: "",

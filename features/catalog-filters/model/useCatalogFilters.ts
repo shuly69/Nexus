@@ -1,4 +1,5 @@
 // features/catalog-filters/model/useCatalogFilters.ts
+"use client";
 import { useState } from "react";
 import { priceRanges } from "@/shared/config/price";
 import { useSearchParams } from "next/navigation";

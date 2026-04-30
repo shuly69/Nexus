@@ -14,7 +14,7 @@ interface CardComponentProps {
     bgColorStatus?: string;
 }
 
-export function Card({ brand, model, imageUrl, price, oldPrice, rating, id, reviews, variants, status, slug }: CardPhone) {
+export function Card({ brand, model, imageUrl, price, oldPrice, rating, id, reviews, variants, status, slug, description, specs, features }: CardPhone) {
     
     const [mounted, setMounted] = useState(false);
     useEffect(() => setMounted(true), []);
@@ -53,7 +53,7 @@ export function Card({ brand, model, imageUrl, price, oldPrice, rating, id, revi
                             className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center border cursor-pointer border-white rounded-full bg-white group"
                             onClick={(e) => {
                                 e.preventDefault();
-                                addToFavourite({ id: String(id), brand, model, price, quantity: 1, capacity: firstCapacity, colorId: firstColor?.name, imageUrl });
+                                addToFavourite({ id: String(id), brand, model, price, quantity: 1, capacity: firstCapacity, colorId: firstColor?.name, imageUrl, description, specs, features });
                             }}
                         >
                             <HeartIcon

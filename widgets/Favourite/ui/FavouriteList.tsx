@@ -21,7 +21,7 @@ export function FavouriteList() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
             {items.map(item => (
                 <Card key={item.id} id={item.id} brand={item.brand} model={item.model} price={item.price} imageUrl={item.imageUrl || ''} variants={[{capacity: item.capacity,
- colors: [{ name: item.colorId, stock: 1 }]}]} />
+ colors: [{ name: item.colorId, stock: 1 }]}]} description="" specs={item.specs} features={[]} />
             ))}
         </div>
         </>

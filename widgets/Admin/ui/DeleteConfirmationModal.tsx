@@ -10,7 +10,10 @@ export function DeleteConfirmationModal() {
   function handleDeletePhone() {
  if (!phoneToDelete) return;
 
-  deletePhone(phoneToDelete.id);
+ if (!phoneToDelete?.id && phoneToDelete?.id !== 0) return;
+
+deletePhone(Number(phoneToDelete.id));
+
 
 
   

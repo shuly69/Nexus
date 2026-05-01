@@ -8,6 +8,10 @@
 
 > A modern e-commerce demo application showcasing best practices in Next.js 16, React 19, and TypeScript development.
 
+## 🌐 Live Demo
+
+Visit the live site: [https://nexus-five-sooty.vercel.app](https://nexus-five-sooty.vercel.app)
+
 ## 📋 Table of Contents
 
 - [Overview](#-overview)

@@ -159,7 +159,7 @@ const handleEditPhone = () => {
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Image</label>
-                        <div className="*:text-black"> <UploadImage
+                         <UploadImage
                             onUpload={(url) =>
                                 setFormData(prev => ({
                                     ...prev,
@@ -177,7 +177,7 @@ const handleEditPhone = () => {
                         {formErrors.imageUrl && (
   <p className="text-red-500 text-sm">{formErrors.imageUrl}</p>
 )}
-                        </div>
+                       
                        
 
                     </div>

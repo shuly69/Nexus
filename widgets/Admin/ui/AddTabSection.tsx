@@ -159,7 +159,7 @@ const handleEditPhone = () => {
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Image</label>
-                        <div> <UploadImage
+                        <div className="*:text-black"> <UploadImage
                             onUpload={(url) =>
                                 setFormData(prev => ({
                                     ...prev,

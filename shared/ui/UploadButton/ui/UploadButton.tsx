@@ -11,8 +11,8 @@ export default function UploadImage({
   onError: (message: string) => void;
 }) {
   return (
-    <div className="text-black">
-<UploadButton<OurFileRouter, "imageUploader">
+    
+    <UploadButton<OurFileRouter, "imageUploader">
       endpoint="imageUploader"
       onClientUploadComplete={(res) => {
         const file = res[0];
@@ -23,8 +23,6 @@ export default function UploadImage({
         onError(e.message); 
       }}
     />
-    </div>
-    
   );
 }
 

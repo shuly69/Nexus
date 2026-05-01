@@ -66,7 +66,8 @@ export function Navigation () {
                     {navLinks.map((link) => (
                   <NavLinkMobile key={link.label} label={link.label} href={link.href} />
                 ))}
-                <Link className="hover:text-black transition-colors cursor-pointer" href='/account'>Account</Link>
+                <div onClick={handleLogout} className="hover:text-black transition-colors cursor-pointer" >{ user ? <><div> {user.name === "Admin" ? <Link href="/admin">Admin</Link>  : <Link href="/account">Account</Link>} </div>
+                  <div onClick={handleLogout} className="cursor-pointer">Logout</div></> : <><div><Link href="/auth">Login</Link></div></>}</div>
                   </div>
                 </div>
             </div>

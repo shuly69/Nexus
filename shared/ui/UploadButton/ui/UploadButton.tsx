@@ -15,7 +15,6 @@ export default function UploadImage({
     <UploadButton<OurFileRouter, "imageUploader" >
       endpoint="imageUploader"
       onClientUploadComplete={(res) => {
-        console.log("UPLOAD RESULT:", res);
         const file = res[0];
         const url = file.ufsUrl ?? file.url;
         onUpload(url);
@@ -23,7 +22,6 @@ export default function UploadImage({
       onUploadError={(e) => {
         onError(e.message); 
       }}
-      className="mt-4 ut-button:bg-red-500 ut-button:ut-readying:bg-red-500/50"
     />
   );
 }

@@ -166,9 +166,17 @@ const handleEditPhone = () => {
                                     imageUrl: url,
                                 }))
                             }
-                            
+                            onError={(msg) =>
+                                setFormErrors(prev => ({
+                                    ...prev,
+                                    imageUrl: msg, // ← сохраняем ошибку
+                                }))
+                            }
                         />
                         <span>Choose Image</span>
+                        {formErrors.imageUrl && (
+  <p className="text-red-500 text-sm">{formErrors.imageUrl}</p>
+)}
                         </div>
                        
 

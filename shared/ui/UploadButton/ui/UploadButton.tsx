@@ -15,6 +15,7 @@ export default function UploadImage({
     <UploadButton<OurFileRouter, "imageUploader" >
       endpoint="imageUploader"
       onClientUploadComplete={(res) => {
+        console.log("UPLOAD RESULT:", res);
         const file = res[0];
         const url = file.ufsUrl ?? file.url;
         onUpload(url);

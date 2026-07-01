@@ -100,7 +100,7 @@ export function Card({ brand, model, imageUrl, price, oldPrice, rating, id, revi
                             <span className="text-[#111827] text-lg font-bold">${price}</span>
                         )}
                     </div>
-                    <AddToCartButton id={String(id)} model={model} brand={brand} color={selectedColor ?? 'white'} capacity={firstCapacity} price={price} imageUrl={imageUrl} />
+                    <AddToCartButton id={String(id)} model={model} brand={brand} color={selectedColor ?? 'white'} capacity={firstCapacity} price={price} imageUrl={imageUrl} specs={specs} description={description} features={features} />
                 </div> 
             </div>
              

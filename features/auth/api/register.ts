@@ -1,9 +1,15 @@
-export async function registerUser(data: any) {
-  return new Promise((resolve, reject) => {
+import type { RegisterFormData } from "../type/type";
+
+type RegisterResponse = {
+  success: boolean;
+  userId: string;
+};
+
+// In production replace with: fetch('/api/auth/register', { method: 'POST', body: JSON.stringify(data) })
+export async function registerUser(_data: RegisterFormData): Promise<RegisterResponse> {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ success: true, userId: "12345" });
-      // reject({ success: false, message: "Email already exists" });
+      resolve({ success: true, userId: crypto.randomUUID() });
     }, 1200);
   });
 }
-

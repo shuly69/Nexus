@@ -3,7 +3,6 @@ import { CardPhone, Variant, ColorVariant} from "@/entities/Card/type/model";
 import { addVariantToForm, removeVariantFromForm } from "@/entities/Phone/lib/updateColor";
 import { useState } from "react";
 const initialForm: CardPhone = {
-        id: 1,
         model: '',
         fullName: '',
         brand: '',

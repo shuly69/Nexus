@@ -1,4 +1,4 @@
-# Nexus - E-Commerce Demo Project
+# Nexus — E-Commerce Demo
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-61DAFB)](https://react.dev)
@@ -6,161 +6,66 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38BDF8)](https://tailwindcss.com)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-> A modern e-commerce demo application showcasing best practices in Next.js 16, React 19, and TypeScript development.
+A modern e-commerce storefront for phones and electronics, built with Next.js 16 App Router and Feature-Sliced Design architecture.
 
-## 🌐 Live Demo
+**Live demo:** [nexus-five-sooty.vercel.app](https://nexus-five-sooty.vercel.app)
+> Demo account: `demo@nexus.com` · Admin account: `admin@nexus.com`
+> *(passwords stored in `.env` — see `.env.example`)*
 
-Visit the live site: [https://nexus-five-sooty.vercel.app](https://nexus-five-sooty.vercel.app)
+---
 
-## 📋 Table of Contents
+## Tech stack
 
-- [Overview](#-overview)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Key Features](#-key-features)
-- [Architecture](#-architecture)
-- [Screenshots](#-screenshots)
-- [Dependencies](#-dependencies)
-- [Contributing](#-contributing)
-- [FAQ](#-faq)
-- [License](#-license)
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript 5 (strict) |
+| UI | React 19 + Tailwind CSS 4 |
+| State | Zustand 5 (with persist middleware) |
+| Validation | Zod 4 |
+| Auth | NextAuth.js 4 (mock provider) |
+| Database | Firebase 12 |
+| Animations | Motion 12 |
+| Package manager | pnpm |
 
-## 📖 Overview
+## Architecture
 
-Nexus is a comprehensive e-commerce demo project designed to demonstrate modern web development practices. It features a complete phone/electronics shopping platform with:
-
-- 🛒 Product catalog with advanced filtering and sorting
-- 👤 User authentication and profile management
-- ❤️ Favorites/wishlist functionality
-- 🏠 Admin dashboard for product management
-- 📱 Fully responsive design
-- ✨ Smooth animations and transitions
-
-This project is ideal for learning purposes, portfolio demonstration, or as a starting point for e-commerce applications.
-
-## 🚀 Tech Stack
-
-| Category | Technology | Version |
-|----------|------------|---------|
-| Framework | Next.js | 16.1.6 |
-| Language | TypeScript | 5.x |
-| UI Library | React | 19.2.3 |
-| Styling | Tailwind CSS | 4 |
-| State Management | Zustand | 5.0.12 |
-| Authentication | NextAuth.js | 4.24.14 |
-| Database | Firebase | 12.12.0 |
-| Validation | Zod | 4.3.6 |
-| Animations | Motion | 12.34.4 |
-| Package Manager | pnpm | - |
-
-## 📁 Project Structure
+The project follows [Feature-Sliced Design](https://feature-sliced.design/):
 
 ```
-my-app/
-├── app/                    # Next.js App Router pages
-│   ├── page.tsx            # Home page
-│   ├── account/            # User account page
-│   ├── admin/              # Admin dashboard
-│   ├── auth/               # Authentication pages
-│   ├── cart/               # Shopping cart
-│   ├── catalog/            # Product catalog
-│   ├── contacts/           # Contact page
-│   ├── favourite/          # User favorites
-│   ├── registration/      # User registration
-│   ├── returns/           # Returns policy page
-│   └── warranty/          # Warranty information
-├── entities/               # Domain entities
-│   ├── Card/               # Shopping cart entity
-│   ├── Contacts/          # Contact entity
-│   ├── Phone/              # Phone product entity
-│   ├── Product/           # Generic product entity
-│   ├── Promo/              # Promotion entity
-│   └── User/               # User entity
-├── features/               # Business logic modules
-│   ├── admin/              # Admin functionality
-│   ├── auth/               # Authentication logic
-│   ├── cart/               # Cart management
-│   ├── catalog-filters/    # Catalog filtering
-│   ├── checkout/           # Checkout process
-│   ├── favourite/          # Favorites management
-│   ├── hero-filters/       # Hero section filters
-│   ├── phone/              # Phone-specific features
-│   └── profile/            # User profile management
-├── widgets/                # Reusable UI components
-│   ├── Admin/              # Admin widgets
-│   ├── Auth/               # Auth widgets
-│   ├── Banner/             # Banner components
-│   ├── Brand/              # Brand display
-│   ├── Cart/               # Cart widgets
-│   ├── Catalog/            # Catalog widgets
-│   ├── Category/           # Category widgets
-│   ├── Contacts/           # Contact widgets
-│   ├── Deal/               # Deal/promotion widgets
-│   ├── Favourite/          # Favorites widgets
-│   ├── Footer/             # Footer component
-│   ├── Header/             # Header component
-│   ├── Hero/               # Hero section
-│   ├── Navigation/         # Navigation widgets
-│   ├── Phone/              # Phone-specific widgets
-│   ├── Popular-phones/     # Popular phones
-│   ├── Profile/            # Profile widgets
-│   ├── Review/             # Review widgets
-│   ├── Subscribe/          # Newsletter subscribe
-│   └── Support/            # Support widgets
-├── shared/                 # Shared utilities
-│   ├── api/                # API utilities
-│   ├── config/             # Configuration files
-│   ├── hooks/              # Custom React hooks
-│   ├── lib/                # Utility libraries
-│   └── ui/                 # Base UI components
-└── public/                 # Static assets
-    ├── images/             # Image assets
-    └── svg/                # SVG assets
+├── app/          # Next.js routes (pages + layouts)
+├── widgets/      # Composite UI sections (Header, Cart, Admin dashboard…)
+├── features/     # User interactions with side effects (auth, cart, filters…)
+├── entities/     # Business domain models and base UI (Card, Phone, User…)
+└── shared/       # Reusable utilities, hooks, UI primitives
 ```
 
-## 🛠️ Getting Started
-
-### Prerequisites
-
-| Tool | Version | Notes |
-|------|---------|-------|
-| Node.js | 18+ | LTS recommended |
-| pnpm | 8+ | Package manager |
-
-### Installation
+## Getting started
 
 ```bash
-# Clone the repository
-git clone <repository-url>
+# Prerequisites: Node.js 18+, pnpm 8+
 
-# Navigate to project directory
-cd my-app
-
-# Install dependencies
+git clone https://github.com/shuly69/Nexus.git
+cd Nexus
+cp .env.example .env.local   # fill in your credentials
 pnpm install
-
-# Start development server
-pnpm dev
+pnpm dev                     # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Product catalog with brand, price, and capacity filters
+- Per-variant add-to-cart (color + storage combination)
+- Persistent cart and wishlist via `localStorage`
+- User authentication with role-based routing (`user` / `admin`)
+- Admin dashboard: add, edit, delete products and manage stock
+- Responsive design — mobile menu + desktop navigation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | Description |
+|---|---|
+| `pnpm dev` | Start development server |
+| `pnpm build` | Production build |
+| `pnpm type-check` | TypeScript check without emitting |
+| `pnpm lint` | ESLint |

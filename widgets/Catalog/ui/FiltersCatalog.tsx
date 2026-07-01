@@ -1,7 +1,17 @@
 import { brandsCatalog } from '@/shared/config/brand';
 
 import { priceRanges } from '@/shared/config/price';
-export function FiltersCatalog({brands, setBrands, price, setPrice, reset} : {brands : string[], setBrands : (brand: string) => void, price: any, setPrice : React.Dispatch<React.SetStateAction<any>>, reset: any}) {
+import React from "react";
+
+type PriceRange = { label: string; min: number; max: number };
+
+export function FiltersCatalog({ brands, setBrands, price, setPrice, reset }: {
+  brands: string[];
+  setBrands: (brand: string) => void;
+  price: PriceRange;
+  setPrice: React.Dispatch<React.SetStateAction<PriceRange>>;
+  reset: () => void;
+}) {
     return (
         <div className="lg:w-72 shrink-0">
                   <div className="bg-white rounded-2xl border border-gray-200 p-5 sticky top-24">

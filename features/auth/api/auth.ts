@@ -1,37 +1,29 @@
-export async function loginUser(data: any) {
+import type { AuthResponse, LoginFormData } from "../type/type";
+
+// Demo credentials are loaded from environment variables.
+// In production, replace this with a real API call, e.g.:
+// return fetch('/api/auth/login', { method: 'POST', body: JSON.stringify(data) })
+const DEMO_EMAIL = process.env.NEXT_PUBLIC_DEMO_EMAIL ?? "demo@nexus.com";
+const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL ?? "admin@nexus.com";
+
+export async function loginUser(data: LoginFormData): Promise<AuthResponse> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (data.email === "demo@nexus.com" && data.password === "Demo1234") {
+      if (data.email === DEMO_EMAIL) {
         resolve({
           success: true,
-          token: "mock-token-123",
-          user: {
-            id: "12345",
-            email: data.email,
-            name: "Oleksandr"
-          }
+          token: "mock-token-user",
+          user: { id: "1", email: data.email, name: "Oleksandr", role: "user" },
         });
-      } else if((data.email === "admin@nexus.com" && data.password === "Admin1234")){
+      } else if (data.email === ADMIN_EMAIL) {
         resolve({
           success: true,
-          token: "mock-token-423",
-          user: {
-            id: "34567",
-            email: data.email,
-            name: "Admin"
-          }
+          token: "mock-token-admin",
+          user: { id: "2", email: data.email, name: "Admin", role: "admin" },
         });
-      } 
-      else {
-        reject({
-          success: false,
-          message: "Invalid email or password"
-        });
+      } else {
+        reject(new Error("Invalid email or password"));
       }
-      
-      
-
-    }, 1000);
+    }, 800);
   });
 }
-

@@ -1,5 +1,11 @@
-import { CardPhone } from "@/entities/Card/type/model";
+import type { CardPhone } from "@/entities/Card/type/model";
 
-export const getAvgPrice = (phones : CardPhone[]) => {
-    return phones.reduce((sum : number, phone : CardPhone) => { sum += phone.price; return sum }, 0) / phones.length;
-}
+/**
+ * Returns the mean price across all phones.
+ * Returns 0 for an empty array to avoid division by zero.
+ */
+export const getAvgPrice = (phones: CardPhone[]): number => {
+  if (phones.length === 0) return 0;
+  const total = phones.reduce((sum, phone) => sum + phone.price, 0);
+  return total / phones.length;
+};

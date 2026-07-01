@@ -28,10 +28,10 @@ export function ColorChoice({ colors, color, setColor } : { colors: { name: stri
               backgroundColor: COLOR_MAP[normalized] ?? "#ccc"
             }}
             onClick={() => {
-              if (isDisabled) return; // ❌ нельзя выбрать цвет без стока
+              if (isDisabled) return; // Out-of-stock colors are not selectable.
 
-              setColor(prev =>
-                prev === normalized ? null : normalized // повторный клик снимает выделение
+              setColor((prev) =>
+                prev === normalized ? null : normalized // Clicking the active color deselects it.
               );
             }}
           ></li>

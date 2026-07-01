@@ -6,12 +6,12 @@ export function StarRatingStatic({ value } : { value : number }) {
 
         return (
           <div key={star} className="relative w-3 h-2.5">
-            {/* пустая звезда */}
+            {/* Empty star (gray background) */}
             <div className="absolute inset-0 text-gray-300">
               ★
             </div>
 
-            {/* заполненная часть */}
+            {/* Filled portion — width driven by the fractional value */}
             <div
               className="absolute inset-0 text-yellow-400 overflow-hidden"
               style={{ width: `${fill}%` }}

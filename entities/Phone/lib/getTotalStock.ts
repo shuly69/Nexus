@@ -1,21 +1,16 @@
-import { CardPhone, Variant } from "@/entities/Card/type/model";
+import type { CardPhone } from "@/entities/Card/type/model";
 
-export const getTotalStock = (phones : CardPhone[]) => phones.reduce((sum : number, phone : CardPhone) => {
-  const phoneStock = phone.variants?.reduce((variantSum, variant) => {
-    const colorStock = variant.colors.reduce((colorSum, color) => {
-      return colorSum + color.stock;
-    }, 0);
-
-    return variantSum + colorStock;
+/**
+ * Sums the stock across all variants and colors for a single phone.
+ */
+export const getStockByPhone = (phone: CardPhone): number =>
+  phone.variants?.reduce((sum, variant) => {
+    const colorStock = variant.colors.reduce((cs, c) => cs + c.stock, 0);
+    return sum + colorStock;
   }, 0) ?? 0;
 
-  return sum + phoneStock;
-}, 0);
-
-export const getStockByPhone = (phone : CardPhone) => phone.variants?.reduce((sum, variant) => {
-  const colorStock = variant.colors.reduce((colorSum, color) => {
-    return colorSum + color.stock;
-  }, 0);
-
-  return sum + colorStock;
-}, 0) ?? 0;
+/**
+ * Sums the total stock across all phones in the catalog.
+ */
+export const getTotalStock = (phones: CardPhone[]): number =>
+  phones.reduce((sum, phone) => sum + getStockByPhone(phone), 0);

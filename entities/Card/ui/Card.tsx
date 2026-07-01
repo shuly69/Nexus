@@ -1,14 +1,15 @@
 "use client";
-import { CardPhone, ColorVariant } from "../type/model";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import type { CardPhone, ColorVariant } from "../type/model";
 import { PHONE_STATUS_COLORS, PHONE_STATUS_LABELS } from "../type/status";
 import { HeartIcon } from "@/shared/ui/Icon/Icon";
 import { StarRatingStatic } from "./Rating";
-import Link from "next/link";
 import { ColorChoice } from "./Color";
 import { AddToCartButton } from "./AddToCard";
-import { useEffect, useState } from "react";
 import { useFavouriteStore } from "@/features/favourite/model/store";
-import { useAdminStore } from "@/features/admin/model/adminStore";
 
 interface CardComponentProps {
     bgColorStatus?: string;
@@ -39,7 +40,13 @@ export function Card({ brand, model, imageUrl, price, oldPrice, rating, id, revi
         <article className="max-w-71.5 w-full min-h-117.75 border border-[#F3F4F6] rounded-t-2xl bg-white">
             <Link href={`/catalog/${slug}`} className="">
             <div className="w-full h-56 relative">
-                <img className="object-cover object-position-center w-full h-full rounded-t-2xl" src={imageUrl} alt={model} />
+                <Image
+                  className="object-cover w-full h-full rounded-t-2xl"
+                  src={imageUrl}
+                  alt={model}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 286px"
+                />
                 {status && (
                     <span
                         className={`absolute top-2 left-2 px-2 py-1 rounded text-xs font-medium ${PHONE_STATUS_COLORS[status as keyof typeof PHONE_STATUS_COLORS]}`}

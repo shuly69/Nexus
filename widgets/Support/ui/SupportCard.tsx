@@ -1,7 +1,7 @@
 interface SupportCardProps {
     title: string;
     description: string;
-    svg: any;
+    svg: React.ReactNode;
 }
 
 export function SupportCard({ title, description, svg }: SupportCardProps) {

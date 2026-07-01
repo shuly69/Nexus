@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 export function Profile() {
   const router = useRouter();
 
-  // 1) Хуки состояния
+  // State hooks — order matters: user and hydration must resolve before rendering the form.
   const { user, isAuth, role, ready } = useCurrentUser();
   const hydrated = useStoreHydration();
   const { profile, setProfile, updateField, deleteProfile, hasData } = useProfileStore();

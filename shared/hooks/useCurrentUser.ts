@@ -1,29 +1,37 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { AuthUser } from "@/features/auth/type/type";
 
-export function useCurrentUser() {
-  const [user, setUser] = useState<any>(null);
+type CurrentUser = {
+  user: AuthUser | null;
+  role: "user" | "admin" | null;
+  isAuth: boolean;
+  ready: boolean;
+};
+
+export function useCurrentUser(): CurrentUser {
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     try {
       const raw = localStorage.getItem("nexus_user");
-      if (!raw) {
-        setReady(true);
-        return;
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        setUser(parsed?.user ?? null);
       }
-
-      const data = JSON.parse(raw);
-      const current = data?.user ?? null;
-
-      setUser(current);
     } catch {
       setUser(null);
+    } finally {
+      setReady(true);
     }
-
-    setReady(true);
   }, []);
 
-  return { user, role: user?.name, isAuth: !!user, ready };
+  return {
+    user,
+    role: user?.role ?? null,
+    isAuth: !!user,
+    ready,
+  };
 }

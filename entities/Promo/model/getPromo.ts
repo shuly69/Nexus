@@ -11,7 +11,7 @@ export function usePromoCountdown() {
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
-    // MOCK API — вызывается ОДИН раз
+    // Fetched once on mount — simulates an API call that returns the promo end time.
     const now = new Date();
     const endOfDay = new Date();
     endOfDay.setHours(23, 59, 59, 999);
@@ -43,7 +43,7 @@ export function usePromoCountdown() {
       });
     }
 
-    update(); // первый вызов
+    // Called once on mount to set the initial countdown value.
 
     const interval = setInterval(update, 1000);
 

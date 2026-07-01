@@ -1,23 +1,29 @@
 "use client";
+
 import { useState } from "react";
-import { FormErrors } from "../type/type";
+import type { FormErrors, LoginFormData } from "../type/type";
 import { useAuthStore } from "./useAuthStore";
 import { loginUser } from "../api/auth";
 
 export function useAuthForm() {
-   const [isSubmitting, setIsSubmitting] = useState(false);
-   const [errors, setErrors] = useState<FormErrors>({});
-   const [showPassword, setShowPassword] = useState(false);
-  const loginSuccess = useAuthStore((s : any) => s.loginSuccess);
-  const loginFail = useAuthStore((s : any) => s.loginFail);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleSocialLogin = (provider: string) => {void 0};
+  const loginSuccess = useAuthStore((s) => s.loginSuccess);
+  const loginFail = useAuthStore((s) => s.loginFail);
+  const loginError = useAuthStore((s) => s.loginError);
 
-  const handleSubmit = async (formData: any) => {
+  // Placeholder for OAuth — implement with next-auth providers
+  const handleSocialLogin = (_provider: string) => {
+    console.warn("Social login not yet implemented");
+  };
+
+  const handleSubmit = async (formData: LoginFormData): Promise<boolean> => {
     setIsSubmitting(true);
 
     try {
-      const res: any = await loginUser(formData);
+      const res = await loginUser(formData);
       loginSuccess(res.user, res.token);
 
       if (formData.rememberMe) {
@@ -25,8 +31,9 @@ export function useAuthForm() {
       }
 
       return true;
-    } catch (err: any) {
-      loginFail(err.message);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Something went wrong";
+      loginFail(message);
       return false;
     } finally {
       setIsSubmitting(false);
@@ -35,14 +42,12 @@ export function useAuthForm() {
 
   return {
     isSubmitting,
-    loginError: useAuthStore((s : any) => s.loginError),
+    loginError,
     handleSubmit,
     handleSocialLogin,
     errors,
     setErrors,
     showPassword,
-    setShowPassword
+    setShowPassword,
   };
-
-
 }

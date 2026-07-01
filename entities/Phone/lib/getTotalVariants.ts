@@ -1,6 +1,7 @@
-import { CardPhone } from "@/entities/Card/type/model";
+import type { CardPhone } from "@/entities/Card/type/model";
 
-export const getTotalVariants = (phones : CardPhone[]) => phones.reduce((sum : number, phone : CardPhone) => {
-  const phoneVariants = phone.variants?.length ?? 0;
-  return sum + phoneVariants;
-}, 0);
+/**
+ * Returns the total number of variants (storage options) across all phones.
+ */
+export const getTotalVariants = (phones: CardPhone[]): number =>
+  phones.reduce((sum, phone) => sum + (phone.variants?.length ?? 0), 0);

@@ -13,5 +13,5 @@ export async function uploadImage(file: File): Promise<string> {
     throw new Error(data.error || "Upload failed");
   }
 
-  return data.url; // ← готовый imageUrl
+  return data.url; // The resolved public URL ready to store as imageUrl.
 }

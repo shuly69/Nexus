@@ -10,7 +10,7 @@ export const useStoreHydration = () => {
       setHydrated(true);
     });
 
-    // Если Zustand уже гидратирован
+    // Handle the case where Zustand has already finished hydrating before the listener was attached.
     if (useProfileStore.persist.hasHydrated()) {
       setHydrated(true);
     }

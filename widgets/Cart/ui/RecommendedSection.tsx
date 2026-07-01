@@ -22,6 +22,9 @@ export function RecommendationSection() {
                 oldPrice={product.oldPrice}
                 imageUrl={product.imageUrl}
                 slug={product.slug}
+                specs={product.specs}
+                 description={product.description}
+                features={product.features}
               />
             ))}
           </div>

@@ -6,7 +6,7 @@ export type SortOption = "price-low" | "price-high" | "rating" | "name" | "featu
  * Returns a new sorted array of phones without mutating the original.
  * Unrecognised `sortBy` values fall through to the default (featured) order.
  */
-export function sortProducts(products: CardPhone[], sortBy: SortOption | string): CardPhone[] {
+export function sortProducts(products: CardPhone[], sortBy?: SortOption | string): CardPhone[] {
   const sorted = [...products];
 
   switch (sortBy) {

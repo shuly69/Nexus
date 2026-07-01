@@ -1,5 +1,5 @@
 import { useCartStore } from "@/features/cart/model/store";
-import { products } from "@/shared/config/phone";
+import { productsSingle } from "@/shared/config/phone";
 
 export function EmptyCartState() {
   const addToCart = useCartStore(state => state.addToCart);
@@ -11,7 +11,7 @@ export function EmptyCartState() {
     const demoIds = [1, 2];
 
     demoIds.forEach(id => {
-      const product = products.find(p => p.id === id);
+      const product = productsSingle.find(p => p.id === id);
       if (!product) return;
 
       addToCart({
@@ -22,7 +22,10 @@ export function EmptyCartState() {
         model: product.model,
         brand: product.brand,
         price: product.price,
-        imageUrl: product.imageUrl
+        imageUrl: product.imageUrl,
+        specs: product.specs,
+        description: product.description,
+        features: product.features,
       });
     });
   };
@@ -42,7 +45,7 @@ export function EmptyCartState() {
         </button>
         <button
           onClick={() => {
-            const product = products.find(p => p.id === 1);
+            const product = productsSingle.find(p => p.id === 1);
             if (!product) return;
 
             addToCart({
@@ -53,7 +56,10 @@ export function EmptyCartState() {
               model: product.model,
               brand: product.brand,
               price: product.price,
-              imageUrl: product.imageUrl
+              imageUrl: product.imageUrl,
+              specs: product.specs,
+              description: product.description,
+              features: product.features,
             });
           }}
 

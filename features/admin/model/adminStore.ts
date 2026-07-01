@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { CardPhone, Variant } from "@/entities/Card/type/model";
+import { productsSingle } from "@/shared/config/phone";
 
 export type VariantDeletePayload = {
   phone: CardPhone;
@@ -28,6 +29,18 @@ interface AdminStore {
 
   /** UI loading state while an async operation (e.g. image upload) is in progress. */
   isLoading: boolean;
+
+  /**
+   * Seeds `phones` with the bundled catalog on first run. No-op once the
+   * persisted store already holds data, so admin edits are never overwritten.
+   * Called from the page widgets (catalog, deals, popular, recommendations)
+   * so a fresh visitor — including a fresh Vercel deployment with empty
+   * localStorage — always sees products instead of an empty grid.
+   */
+  hydrate: () => void;
+
+  /** Replaces the entire phone list (bulk import / reset). */
+  setPhones: (phones: CardPhone[]) => void;
 
   setLoading: (value: boolean) => void;
   setActiveTab: (tab: AdminStore["activeTab"]) => void;
@@ -76,6 +89,13 @@ export const useAdminStore = create<AdminStore>()(
       successMessage: "",
       showDeleteConfirm: false,
       isLoading: false,
+
+      hydrate: () =>
+        set((state) =>
+          state.phones.length > 0 ? state : { phones: productsSingle }
+        ),
+
+      setPhones: (phones) => set({ phones }),
 
       setLoading: (value) => set({ isLoading: value }),
       setActiveTab: (tab) => set({ activeTab: tab }),

@@ -3,7 +3,6 @@ import Link from "next/link";
 
 export function AuthSuccess() {
   const user = useAuthStore((s) => s.user);
-  console.log(user)
     return (
         <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="max-w-md mx-auto text-center">

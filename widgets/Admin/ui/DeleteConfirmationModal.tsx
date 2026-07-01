@@ -1,12 +1,9 @@
 "use client";
 
-import { savePhones } from "@/entities/Phone/mock/SavePhones";
 import { useAdminStore } from "@/features/admin/model/adminStore";
-import { productsSingle } from "@/shared/config/phone";
 
 export function DeleteConfirmationModal() {
   const { phoneToDelete, setPhoneToDelete, variantToDelete, setVariantToDelete, setShowDeleteConfirm, setSuccessMessage, deletePhone, removeVariant } = useAdminStore();
-  console.log(phoneToDelete)
   function handleDeletePhone() {
  if (!phoneToDelete) return;
 

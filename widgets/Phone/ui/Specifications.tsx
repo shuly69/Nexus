@@ -1,5 +1,6 @@
+import type { CardPhone } from "@/entities/Card/type/model";
 
-export function Specifications({product} : {product : { [key: string]: string }}) {
+export function Specifications({product} : {product : CardPhone}) {
     return (
       <div className="mt-12">
         <h2 className="text-xl font-bold text-gray-900 mb-4">Technical Specifications</h2>

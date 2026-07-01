@@ -13,7 +13,6 @@ export function CatalogSection() {
       useEffect(() => {
           hydrate();
         }, []);
-        console.log(phones)
     const {
   searchQuery,
   setSearchQuery,

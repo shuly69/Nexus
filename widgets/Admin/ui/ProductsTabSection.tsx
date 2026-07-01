@@ -1,17 +1,13 @@
 "use client";
 
-import { CardPhone } from "@/entities/Card/type/model";
 import { expandPhone } from "@/entities/Phone/lib/expandPhone";
 import { getStockByPhone } from "@/entities/Phone/lib/getTotalStock";
-import { savePhones } from "@/entities/Phone/mock/SavePhones";
 import { useCatalogFilters } from "@/features/catalog-filters/model/useCatalogFilters";
-import { brands } from "@/shared/config/brand";
-import { products, productsSingle } from "@/shared/config/phone";
 import { useFilteredProducts } from "@/features/catalog-filters/model/useFilteredProducts";
 import { useAdminStore } from "@/features/admin/model/adminStore";
 
 export function ProductsTabSection( ) {
-   const {setPhones, setEditingPhone, setActiveTab, setPhoneToDelete, setShowDeleteConfirm, setVariantToDelete, setSuccessMessage, toggleBadge, updateVariantQuantity, phones } = useAdminStore();
+   const {setEditingPhone, setActiveTab, setPhoneToDelete, setShowDeleteConfirm, setVariantToDelete, setSuccessMessage, toggleBadge, updateVariantQuantity, phones } = useAdminStore();
 
   const {
     searchQuery,

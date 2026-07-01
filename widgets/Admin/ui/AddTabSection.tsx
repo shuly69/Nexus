@@ -98,7 +98,7 @@ export function AddTabSection() {
   const setSpec = (key: keyof CardPhone["specs"], value: string) =>
     setFormData((prev) => ({
       ...prev,
-      specs: { ...prev.specs, [key]: value },
+      specs: { ...prev.specs, [key]: value } as CardPhone["specs"],
     }));
 
   return (

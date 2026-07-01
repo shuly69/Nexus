@@ -11,7 +11,6 @@ export function HeartIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export function BasketIcon({cartCount = 0} : {cartCount: number}) {
-    console.log(cartCount)
     return (
         <svg width="16px" height="16px" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" > 
             <path d="M6 9L12 3L18 9M4 9H20L18.5 19H5.5L4 9Z" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" />

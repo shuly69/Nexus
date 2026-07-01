@@ -83,11 +83,11 @@ export function Profile() {
                 <h2 className="text-2xl font-semibold">
                   {profile.firstName || profile.lastName 
                     ? `${profile.firstName} ${profile.lastName}`.trim() 
-                    : user.name ? user.name : 'Guest User'}
+                    : user?.name ? user.name : 'Guest User'}
                 </h2>
                 <p className="text-indigo-100 text-sm flex items-center gap-2">
                   <i className="fas fa-envelope" />
-                  <span>{profile.email || (user.email ? user.email :  'email not set')}</span>
+                  <span>{profile.email || (user?.email ? user.email :  'email not set')}</span>
                 </p>
               </div>
             </div>

@@ -1,12 +1,12 @@
 "use client";
 
 import { CardPhone } from "@/entities/Card/type/model";
-import { stats } from "@/entities/Phone/lib/getStats";
+import { getStats } from "@/entities/Phone/lib/getStats";
 import { useAdminStore } from "@/features/admin/model/adminStore";
 
 export function OverviewTabSection() {
   const { phones } = useAdminStore();
-  const statsItems = stats(phones);
+  const statsItems = getStats(phones);
   
     return (
         <div className="space-y-6">
